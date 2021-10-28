@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ListView listViewResult;
     private TextView textViewDebugger;
+    private Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,57 +35,10 @@ public class MainActivity extends AppCompatActivity {
         listViewResult = findViewById(R.id.database_list_view);
         textViewDebugger = findViewById(R.id.debug_textview);
 
-        TokenInterceptor interceptor = new TokenInterceptor();
-
-        OkHttpClient client = new OkHttpClient.Builder()
-                .addInterceptor(interceptor)
-                .build();
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .client(client)
-                .baseUrl("https://api.notion.com/v1/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        NotionPlaceholderAPI notionAPI = retrofit.create(NotionPlaceholderAPI.class);
-
-        //Call = make network request
-        Call<DatabaseQuery> call = notionAPI.getQuery();
-
-        call.enqueue(new Callback<DatabaseQuery>() {  //enqueue so that we dont crash by executing on the main thread, enqueue runs on background thread
-            @Override
-            public void onResponse(Call<DatabaseQuery> call, Response<DatabaseQuery> response) {
-                if (!response.isSuccessful()) {
-                    textViewDebugger.setText("Code: " + response.code()); //return http response code somewhere between 200-300
-                    return;  //null
-                } else {
-                    textViewDebugger.setText(null);
-                }
-                renderData(response);
-            }
-
-            @Override
-            public void onFailure(Call<DatabaseQuery> call, Throwable t) {
-               textViewDebugger.setText(t.getMessage());
-            }
-        });
+        presenter = new Presenter(listViewResult, textViewDebugger);
     }
 
-    private void renderData(Response<DatabaseQuery> response) {
-        List<String> names = new ArrayList<>();
-        DatabaseQuery databaseQuery = response.body();
-        for(Result result: databaseQuery.results){
 
-            String name;
-            try {
-                name = result.properties.name.title.get(0).text.content;
-            } catch (Exception e){
-                name = "(No title)";
-            }
-            names.add(name);
-
-        }
-        listViewResult.setAdapter(new ArrayAdapter<String>(MainActivity.this, R.layout.list_view_row, R.id.database_name, names));
-    }
 
 
 }
