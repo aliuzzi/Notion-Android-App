@@ -53,19 +53,7 @@ public class Presenter {
     }
 
     private void renderListData(Response<DatabaseQuery> response) {
-        List<String> names = new ArrayList<>();
-        DatabaseQuery databaseQuery = response.body();
-        for(Result result: databaseQuery.results){
 
-            String name;
-            try {
-                name = result.properties.name.title.get(0).text.content;
-            } catch (Exception e){
-                name = "(No title)";
-            }
-            names.add(name);
-
-        }
-        listView.setAdapter(new ArrayAdapter<String>(listView.getContext(), R.layout.list_view_row, R.id.database_name, names));
+        listView.setAdapter(new DatabaseQueryArrayAdapter(listView.getContext(), response.body().results));
     }
 }
