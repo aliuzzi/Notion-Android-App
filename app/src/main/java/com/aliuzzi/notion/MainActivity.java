@@ -8,7 +8,6 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import android.media.session.MediaSession;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -60,16 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     textViewDebugger.setText(null);
                 }
-                List<String> names = new ArrayList<>();
-                DatabaseQuery databaseQuery = response.body();
-                for(Result result: databaseQuery.results){
-                    String name = result.properties.name.title.get(0).text.content;
-                    names.add(name);
-
-                }
-                listViewResult.setAdapter(new ArrayAdapter<String>(MainActivity.this, R.layout.list_view_row, R.id.database_name, names));
-
-
+                renderData(response);
             }
 
             @Override
@@ -77,6 +67,23 @@ public class MainActivity extends AppCompatActivity {
                textViewDebugger.setText(t.getMessage());
             }
         });
+    }
+
+    private void renderData(Response<DatabaseQuery> response) {
+        List<String> names = new ArrayList<>();
+        DatabaseQuery databaseQuery = response.body();
+        for(Result result: databaseQuery.results){
+
+            String name;
+            try {
+                name = result.properties.name.title.get(0).text.content;
+            } catch (Exception e){
+                name = "(No title)";
+            }
+            names.add(name);
+
+        }
+        listViewResult.setAdapter(new ArrayAdapter<String>(MainActivity.this, R.layout.list_view_row, R.id.database_name, names));
     }
 
 
