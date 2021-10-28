@@ -109,10 +109,15 @@ public class DatabaseQueryArrayAdapter implements ListAdapter {
         if (multiSelects.isEmpty()) {
             tags.append("(No tags)");
         } else {
-            for (MultiSelect multiSelect : multiSelects) {
-                tags.append(multiSelect.name + ", ");
 
+            for (int i = 0; i < multiSelects.size(); i++) {
+                if (i < multiSelects.size() - 1){
+                    tags.append(multiSelects.get(i).name + ", ");
+                } else {
+                    tags.append(multiSelects.get(i).name);
+                }
             }
+
         }
 
 
