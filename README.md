@@ -12,10 +12,14 @@ In order to run this app, clone this repository and open in Android Studio or a 
  - I ran into some difficulty in the beginning with properly making my HTTP requests using the necessary headers before I leveraged Retrofit to make my life easier. 
     
  2. Do you have any suggestions for improving the API documentation to make it clearer or easier to use?
- - I think the only thing I could suggest was that there was a lot of Web focused code samples that were very helpful on the Notion Developers page, but I found that it lacked Mobile focused code samples unless you did some digging into the Notion Github.
+ - I could suggest that there was a lot of Web focused code samples that were very helpful on the Notion Developers page, but I found that it lacked Mobile focused code samples unless you did some digging into the Notion Github. The Response JSON Schema found here: https://developers.notion.com/reference/post-database-query could be more descriptive / formal on the syntax expected and whether objects can be nullable, etc, to help craft more accuracy. 
  
     
-- A list of links to any major sources you relied on, if any (e.g. a StackOverflow response about how to parse JSON data in Swift)
-https://square.github.io/retrofit/. 
+3. A list of links to any major sources you relied on, if any (e.g. a StackOverflow response about how to parse JSON data in Swift)
+https://square.github.io/retrofit/ 
 https://www.jsonschema2pojo.org/
-- A list of major open-source libraries you chose to use, if any (e.g. "Alamofire for networking")
+
+
+4. A list of major open-source libraries you chose to use, if any (e.g. "Alamofire for networking")
+- Retrofit for Networking. - https://square.github.io/retrofit/ 
+- Flipper for Debugging (Provides a nice stack trace instead of relying on Logcat. - https://fbflipper.com/
