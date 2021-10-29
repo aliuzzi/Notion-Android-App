@@ -32,12 +32,12 @@ public class Presenter {
     public void loadFromNetwork() {
 
         notionRetrofitClient.makeDatabaseQueryRequest(
-            new Callback<DatabaseQuery>() {  //enqueue so that we dont crash by executing on the main thread, enqueue runs on background thread
+            new Callback<DatabaseQuery>() {
                 @Override
                 public void onResponse(Call<DatabaseQuery> call, Response<DatabaseQuery> response) {
                     if (!response.isSuccessful()) {
-                        textViewDebugger.setText("Code: " + response.code()); //return http response code somewhere between 200-300
-                        return;  //null
+                        textViewDebugger.setText("Code: " + response.code());
+                        return;
                     } else {
                         textViewDebugger.setText(null);
                     }

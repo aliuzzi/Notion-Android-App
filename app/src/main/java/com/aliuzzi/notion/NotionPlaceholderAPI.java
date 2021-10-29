@@ -8,6 +8,6 @@ import retrofit2.http.POST;
 
 public interface NotionPlaceholderAPI {
 
-    @POST("databases/314c05d0c5024d14813b2bc8fac532fa/query") //todo
+    @POST("databases/314c05d0c5024d14813b2bc8fac532fa/query")
     Call<DatabaseQuery> getQuery();
 }

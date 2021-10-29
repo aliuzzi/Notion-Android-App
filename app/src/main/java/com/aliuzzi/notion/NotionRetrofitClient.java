@@ -36,7 +36,7 @@ public class NotionRetrofitClient {
     public void makeDatabaseQueryRequest(Callback<DatabaseQuery> callback){
         NotionPlaceholderAPI notionAPI = retrofit.create(NotionPlaceholderAPI.class);
 
-        //Call = make network request
+
         Call<DatabaseQuery> call = notionAPI.getQuery();
 
         call.enqueue(callback);
