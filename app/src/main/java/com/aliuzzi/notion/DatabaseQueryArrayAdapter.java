@@ -100,14 +100,14 @@ public class DatabaseQueryArrayAdapter implements ListAdapter {
             try {
                 name = results.get(position).properties.name.title.get(0).text.content;
             } catch (Exception e){
-                name = "(No title)";
+                name = parent.getContext().getString(R.string.no_names);
             }
         textViewName.setText(name);
 
         StringBuilder tags = new StringBuilder();
         List<MultiSelect> multiSelects = results.get(position).properties.tags.multiSelect;
         if (multiSelects.isEmpty()) {
-            tags.append("(No tags)");
+            tags.append(parent.getContext().getString(R.string.no_tags));
         } else {
 
             for (int i = 0; i < multiSelects.size(); i++) {

@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Notion</string>
+    <string name="network_loading">Making Network Request - No Response Yet</string>
+    <string name="no_names">No Names Found</string>
+    <string name="no_tags">No Tags Found</string>
 </resources>

@@ -3,6 +3,7 @@ package com.aliuzzi.notion;
 
 import android.provider.ContactsContract;
 
+import com.aliuzzi.notion.Constants;
 import com.aliuzzi.notion.api.models.DatabaseQuery;
 
 import okhttp3.OkHttpClient;
@@ -25,7 +26,7 @@ public class NotionRetrofitClient {
 
         Retrofit retrofit = new Retrofit.Builder()
                 .client(client)
-                .baseUrl("https://api.notion.com/v1/")
+                .baseUrl(Constants.API_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

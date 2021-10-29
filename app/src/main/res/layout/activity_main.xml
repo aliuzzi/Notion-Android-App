@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/debug_textview"
-        android:text="Making Network Request - No Response Yet"
+        android:text="@string/network_loading"
         />
 
     <ListView
