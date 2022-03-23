@@ -7,13 +7,6 @@ I used Retrofit, a type-safe HTTP client for Android and Java to make my network
 
 In order to run this app, clone this repository and open in Android Studio or a compatible IDE that can run android code with an emulator. 
 
-
- 1. Was there anything you got stuck on, and if so what did you do to resolve it?
- - I ran into some difficulty in the beginning with properly making my HTTP requests using the necessary headers before I leveraged Retrofit to make my life easier. 
-    
- 2. Do you have any suggestions for improving the API documentation to make it clearer or easier to use?
- - I could suggest that there was a lot of Web focused code samples that were very helpful on the Notion Developers page, but I found that it lacked Mobile focused code samples unless you did some digging into the Notion Github. 
- 
     
 3. A list of links to any major sources you relied on, if any (e.g. a StackOverflow response about how to parse JSON data in Swift)
 https://square.github.io/retrofit/ 
